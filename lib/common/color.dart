@@ -115,6 +115,21 @@ extension ColorSchemeExtension on ColorScheme {
 Color? getDelayColor(int? delay) {
   if (delay == null) return null;
   if (delay < 0) return Colors.red;
-  if (delay < 600) return Colors.green;
+  if (delay < 600) return const Color(0xFF7CE3BE);
   return const Color(0xFFC57F0A);
 }
+
+abstract class AmneziaColors {
+  static const background = Color(0xFF101515);
+  static const surface = Color(0xFF171E1D);
+  static const surfacePanel = Color(0xFF1D2624);
+  static const surfaceHigh = Color(0xFF222D2B);
+  static const border = Color(0xFF2A3632);
+  static const primary = Color(0xFF7CE3BE);
+  static const accentSoft = Color(0xFF203E32);
+  static const accentInk = Color(0xFF123629);
+  static const text = Color(0xFFEDF3F0);
+  static const mutedText = Color(0xFF9AADA5);
+  static const danger = Color(0xFFFFAAA4);
+}
+

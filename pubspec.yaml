@@ -1,5 +1,5 @@
 name: fl_clash
-description: A multi-platform proxy client based on ClashMeta, simple and easy to use, open-source and ad-free.
+description: A multi-platform proxy client with AmneziaWG 3.1 support for Amnezia Control.
 publish_to: 'none'
 version: 0.8.97+2026091001
 environment:

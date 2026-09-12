@@ -41,24 +41,43 @@ ColorScheme genColorScheme(
       ),
     ),
   );
-  final dynamicColor = ref.watch(dynamicColorProvider);
+  ColorScheme scheme;
   if (color == null &&
       (ignoreConfig == true || themeSetting.primaryColor == null)) {
     final seed = switch (brightness) {
       Brightness.light => dynamicColor.lightSeed,
       Brightness.dark => dynamicColor.darkSeed,
     };
-    return ColorScheme.fromSeed(
+    scheme = ColorScheme.fromSeed(
       seedColor: seed ?? dynamicColor.accentColor,
       brightness: brightness,
       dynamicSchemeVariant: themeSetting.schemeVariant,
     );
+  } else {
+    scheme = ColorScheme.fromSeed(
+      seedColor: color ?? Color(themeSetting.primaryColor!),
+      brightness: brightness,
+      dynamicSchemeVariant: themeSetting.schemeVariant,
+    );
   }
-  return ColorScheme.fromSeed(
-    seedColor: color ?? Color(themeSetting.primaryColor!),
-    brightness: brightness,
-    dynamicSchemeVariant: themeSetting.schemeVariant,
-  );
+  if (brightness == Brightness.dark) {
+    return scheme.copyWith(
+      surface: const Color(0xFF101515),
+      surfaceContainer: const Color(0xFF171E1D),
+      surfaceContainerHigh: const Color(0xFF1D2624),
+      surfaceContainerHighest: const Color(0xFF222D2B),
+      outline: const Color(0xFF2A3632),
+      outlineVariant: const Color(0xFF203E32),
+      primary: const Color(0xFF7CE3BE),
+      onPrimary: const Color(0xFF123629),
+      primaryContainer: const Color(0xFF203E32),
+      onPrimaryContainer: const Color(0xFF7CE3BE),
+      onSurface: const Color(0xFFEDF3F0),
+      onSurfaceVariant: const Color(0xFF9AADA5),
+      error: const Color(0xFFFFAAA4),
+    );
+  }
+  return scheme;
 }
 
 @riverpod
