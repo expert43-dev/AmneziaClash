@@ -41,6 +41,7 @@ ColorScheme genColorScheme(
       ),
     ),
   );
+  final dynamicColor = ref.watch(dynamicColorProvider);
   ColorScheme scheme;
   if (color == null &&
       (ignoreConfig == true || themeSetting.primaryColor == null)) {
